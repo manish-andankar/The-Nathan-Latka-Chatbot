@@ -1,0 +1,13 @@
+python-dotenv
+langchain
+openai
+pinecone-client
+unstructured
+tabulate
+pdf2image
+streamlit
+tiktoken
+youtube_transcript_api
+elevenlabs==0.2.19
+ffmpeg
+scrapetube
