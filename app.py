@@ -71,7 +71,7 @@ def configure_qa_chain():
     return qa_chain
 
 openai_api_key = st.sidebar.text_input(key="openai_api_key", label="OpenAI API Key", type="password")
-print(openai_api_key)
+
 if not openai_api_key:
     st.info("Please add your OpenAI API key to continue.")
     st.stop()
@@ -95,9 +95,10 @@ class PrintRetrievalHandler(BaseCallbackHandler):
             source = os.path.basename(doc.metadata["source"])
             if source not in reference:
                 print(source)
-                print("https://youtu.be/"+re.sub(r'\.txt$', '', source))
+                youtube_url = "https://youtu.be/"+re.search(r'[^\\]+(?=\.txt$)', source).group()
+                print("Youtube URL: " + youtube_url)
                 reference.append(source)
-                st_player(key=str(uuid.uuid4()), url="https://youtu.be/"+re.sub(r'\.txt$', '', source))
+                st_player(key=str(uuid.uuid4()), url=youtube_url)
             self.container.write(f"**Document {idx} from {source}**")
             self.container.markdown(doc.page_content)
 
