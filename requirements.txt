@@ -11,3 +11,5 @@ youtube_transcript_api
 elevenlabs==0.2.19
 ffmpeg
 scrapetube
+streamlit-player
+audio-recorder-streamlit
