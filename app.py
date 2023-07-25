@@ -21,8 +21,6 @@ from langchain import PromptTemplate
 #     HumanMessagePromptTemplate,
 # )
 
-
-
 load_dotenv()
 
 PINECONE_API_KEY = os.getenv('PINECONE_API_KEY')
@@ -45,8 +43,14 @@ PROMPT_TEMPLATE = os.getenv("PROMPT_TEMPLATE")
 # st.markdown("# Hello World!")
 # st.chat_input("Hello, I am a helpful assistant. It depends on you how helpful I am!")
 # st.audio(data="https://github.com/newdevorder/The-Nathan-Latka-Chatbot/blob/main/whogaveyouthislink.wav", format="audio/wav")
+st.set_page_config(page_title="Chat with Nathan Latka!", page_icon="assets/nathan.jpg")
+title, brand_icon = st.columns([0.7, 0.3])
+with title:
+    st.title("Chat with Nathan from Founderpath.com!")
+with brand_icon:
+    st.image("assets/founderpath-lg.svg")
 
-@st.cache_resource
+# @st.cache_resource
 def configure_qa_chain():
     
     embeddings = OpenAIEmbeddings(
@@ -66,7 +70,8 @@ def configure_qa_chain():
     )
     return qa_chain
 
-openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+openai_api_key = st.sidebar.text_input(key="openai_api_key", label="OpenAI API Key", type="password")
+print(openai_api_key)
 if not openai_api_key:
     st.info("Please add your OpenAI API key to continue.")
     st.stop()
