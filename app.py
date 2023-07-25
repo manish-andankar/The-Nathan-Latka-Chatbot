@@ -78,7 +78,7 @@ if not openai_api_key:
 
 class PrintRetrievalHandler(BaseCallbackHandler):
     def __init__(self, container):
-        self.container = container.expander("Additional Context")
+        self.container = container.expander("Click me for details")
 
     # def on_retriever_start(self, query: str, **kwargs):
     #     # print(**kwargs)
