@@ -94,6 +94,8 @@ class PrintRetrievalHandler(BaseCallbackHandler):
             # st.info("https://youtu.be/"+idx)
             source = os.path.basename(doc.metadata["source"])
             if source not in reference:
+                print(source)
+                print("https://youtu.be/"+re.sub(r'\.txt$', '', source))
                 reference.append(source)
                 st_player(key=str(uuid.uuid4()), url="https://youtu.be/"+re.sub(r'\.txt$', '', source))
             self.container.write(f"**Document {idx} from {source}**")
